@@ -99,7 +99,7 @@
                             <div class="col-2" style="margin-top: 23">
 
                                 <a href="{{ route('customer.create') }}" class="btn btn btn-success " style="text-align: center;min-width: 250px!important; background-color: #1598ca;
-                                                border-color: #1598ca;">
+                                                    border-color: #1598ca;">
                                     @lang('site.addReceiver')
                                 </a>
                             </div>
@@ -107,13 +107,13 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" style="text-align: center;min-width: 250px!important;background-color: #1598ca;
-                                        border-color: #1598ca; margin-bottom: 30px;">@lang('site.fillDetails')</button>
+                                            border-color: #1598ca; margin-bottom: 30px;">@lang('site.fillDetails')</button>
                     </div>
             </form>
         @else
             <div style="text-align: center">
                 <a href="{{ route('createInvoice') }}" class="btn btn-success" style="text-align: center;min-width: 250px!important;background-color: #1598ca;
-                                border-color: #1598ca; margin-bottom: 30px;">@lang('site.backtochoose')</a>
+                                    border-color: #1598ca; margin-bottom: 30px;">@lang('site.backtochoose')</a>
             </div>
         @endif
 
@@ -266,7 +266,6 @@
                             </div>
                             @endforeach
                         @else
-
                             <div class="col-6">
                                 <label class="form-label">@lang('site.Receiver_to')</label>
                                 <div class="">
@@ -290,7 +289,7 @@
                                     <div class="col-4">
                                         <label class="form-label">@lang('site.Country')</label>
                                         <div class="">
-                                            <input type="text" class="form-control  text-center" name="receiverCountry"
+                                            <input type="text" class="form-control  text-center" name="receiverCountry" value="EG"
                                                 placeholder="@lang('site.Country')">
                                         </div>
                                     </div>
@@ -559,11 +558,9 @@
                                                             class="form-label">@lang("site.Line Item")</label>
                                                         <select name="itemCode[]" id="itemCode"
                                                             class="form-control form-control-sm">
-                                                            <option value="10000335" selected>المنتجات الصوفية القطنية
+                                                            <option value="10001699" selected>أقمشة / منسوجات التطريز
                                                             </option>
-                                                            <option value="10000742">تشطيب/تنشية الأقمشة</option>
-                                                            <option value="10000715">مجموعات متنوعة من مستحضرات النظافة
-                                                                العامة والشخصية</option>
+
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -642,8 +639,7 @@
                                                     </div>
                                                     <div class="row g-3">
                                                         <div class="col-md-6">
-                                                            <label for="lineDiscount"
-                                                                class="form-label">الخصم</label>
+                                                            <label for="lineDiscount" class="form-label">الخصم</label>
 
                                                             <input class="form-control" placeholder=" @lang("
                                                                 site.Discount")" type="number" step="any"
@@ -652,8 +648,8 @@
                                                                 onmouseover="discount(this.value),findTotalDiscountAmount(),findTotalNetAmount(),findTotalt4Amount(),findTotalt2Amount()">
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label for="lineDiscountAfterTax"
-                                                                class="form-label">خصم الأصناف
+                                                            <label for="lineDiscountAfterTax" class="form-label">خصم
+                                                                الأصناف
                                                             </label>
                                                             <input type="number" class="form-control" step="any"
                                                                 name="itemsDiscount[]" id="itemsDiscount"
@@ -668,8 +664,8 @@
                                                         @lang("site.Line Total")
                                                         <div class="row g-3">
                                                             <div class="col-md-6">
-                                                                <label for="TotalTaxableFees"
-                                                                    class="form-label">اجمالى ضريبة القيمة المضافة</label>
+                                                                <label for="TotalTaxableFees" class="form-label">اجمالى
+                                                                    ضريبة القيمة المضافة</label>
                                                                 <input type="number" readonly class="form-control"
                                                                     step="any" name="t2Amount[]" id="t2"
                                                                     onkeyup="findTotalt2Amount()"
@@ -677,8 +673,8 @@
                                                                     site.Total Taxable Fees")">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="Totalt4Amount"
-                                                                    class="form-label">اجمالى ضريبة المنبع</label>
+                                                                <label for="Totalt4Amount" class="form-label">اجمالى
+                                                                    ضريبة المنبع</label>
                                                                 <input type="number" class="form-control"
                                                                     name="t4Amount[]" readonly id="t4Amount"
                                                                     onkeyup="findTotalt4Amount()"
@@ -744,13 +740,15 @@
 
                                     <div class="row g-3">
                                         <div class="col-md-6">
-                                            <label for="findTotalt2Amount" class="form-label">إجمالى ضريبة القيمة المضافة</label>
+                                            <label for="findTotalt2Amount" class="form-label">إجمالى ضريبة القيمة
+                                                المضافة</label>
                                             <input type="number" class="form-control" step="any" name="totalt2Amount"
                                                 onmouseover="findTotalt2Amount()" onkeyup="findTotalt2Amount()" readonly
                                                 id="totalt2Amount">
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="findTotalt4Amount" class="form-label">إجمالى ضريبة المنبع</label>
+                                            <label for="findTotalt4Amount" class="form-label">إجمالى ضريبة
+                                                المنبع</label>
                                             <input class="form-control" type="number" step="any" name="totalt4Amount"
                                                 onmouseover="findTotalt4Amount()" onkeyup="findTotalt4Amount()" readonly
                                                 id="totalt4Amount">
@@ -768,7 +766,8 @@
                                                 readonly id="TotalSalesAmount">
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="findTotalNetAmount" class="form-label">إجمالى المبلغ الصافى</label>
+                                            <label for="findTotalNetAmount" class="form-label">إجمالى المبلغ
+                                                الصافى</label>
                                             <input type="number" step="any" class="form-control" name="TotalNetAmount"
                                                 onmouseover="findTotalNetAmount()" onkeyup="findTotalNetAmount()" readonly
                                                 id="TotalNetAmount">
@@ -783,7 +782,8 @@
 
 
                                         <div class="col-12">
-                                            <label for="ExtraInvoiceDiscount" class="form-label">الخصم الإضافى (مابعد الضريبة) </label>
+                                            <label for="ExtraInvoiceDiscount" class="form-label">الخصم الإضافى (مابعد
+                                                الضريبة) </label>
                                             <input type="number" class="form-control" step="any" name="ExtraDiscount"
                                                 id="ExtraDiscount" onkeyup="Extradiscount(this.value),findTotalAmount()"
                                                 onmouseover="Extradiscount(this.value),findTotalAmount()" required>
@@ -844,9 +844,7 @@
                                 <label for="inputProductTitle"
                                     class="form-label">@lang("site.Line Item")</label>
                                 <select name="itemCode[]" id="itemCode" class="form-control form-control-sm">
-                            <option value="10000335" selected>المنتجات الصوفية القطنية</option>
-                            <option value="10000742">تشطيب/تنشية الأقمشة</option>
-                            <option value="10000715">مجموعات متنوعة من مستحضرات النظافة العامة والشخصية</option>
+                             <option value="10001699" selected>أقمشة / منسوجات التطريز</option>
                                  </select>
                              </div>
                                 <div class="mb-3">

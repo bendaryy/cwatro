@@ -53,9 +53,9 @@
 
                 <div>
                     @if (LaravelLocalization::getCurrentLocale() == 'en')
-                    <a href="{{ url('/') }}">  <h4 class="logo-text">Fouad El-Watan</h4></a>
+                    <a href="{{ url('/') }}">  <h4 class="logo-text">الكواترو للتصدير والتوريدات العمومية</h4></a>
                     @else
-                    <a href="{{ url('/') }}"><h4 class="logo-text">Fouad El-Watan</h4></a>
+                    <a href="{{ url('/') }}"><h4 class="logo-text">الكواترو للتصدير والتوريدات العمومية</h4></a>
                     @endif
 
                 </div>
@@ -296,7 +296,7 @@
                 class='bx bxs-up-arrow-alt'></i></a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2021. Developed By <a href="" target=".blank">Fouad El-Watan Team</a></p>
+            <p class="mb-0">Copyright © 2021. Developed By <a href="" target=".blank">الكواترو للتصدير والتوريدات العمومية Team</a></p>
         </footer>
     </div>
     @if (session()->has('modal'))

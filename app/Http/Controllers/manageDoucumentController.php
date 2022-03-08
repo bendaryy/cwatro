@@ -55,11 +55,8 @@ class manageDoucumentController extends Controller
         return view('invoices.receivedInvoices', compact('allInvoices', 'allMeta', 'taxId'));
     }
 
-
-
     public function invoiceDollar(Request $request)
     {
-
 
         $validated = $request->validate([
             // 'receiverCountry' => 'required',
@@ -100,23 +97,14 @@ class manageDoucumentController extends Controller
 
             "receiver" => array(
                 "address" => array(
-                    "country" => $request->receiverCountry,
-                    "governate" => $request->receiverGovernate,
-                    "regionCity" => $request->receiverRegionCity,
-                    "street" => $request->street,
-                    "buildingNumber" => $request->receiverBuildingNumber,
-                    "postalCode" => $request->receiverPostalCode,
-                    "floor" => $request->receiverFloor,
-                    "room" => $request->receiverRoom,
-                    "landmark" => $request->receiverLandmark,
-                    "additionalInformation" => $request->receiverAdditionalInformation,
+
                 ),
                 "type" => $request->receiverType,
                 "id" => $request->receiverId,
                 "name" => $request->receiverName,
             ),
             "documentType" => $request->DocumentType,
-            "documentTypeVersion" => "0.9",
+            "documentTypeVersion" => "1.0",
             "dateTimeIssued" => $request->date . "T" . date("h:i:s") . "Z",
             "taxpayerActivityCode" => $request->taxpayerActivityCode,
             "internalID" => $request->internalId,
@@ -178,7 +166,7 @@ class manageDoucumentController extends Controller
                     [
                         "taxType" => "T1",
                         "amount" => floatval($request->t2Amount[$i]),
-                        "subType" => ($request->t4subtype[$i]),
+                        "subType" => ($request->t1subtype[$i]),
                         "rate" => floatval($request->rate[$i]),
                     ],
                 ],
@@ -187,6 +175,19 @@ class manageDoucumentController extends Controller
             $invoice['invoiceLines'][$i] = $Data;
         }
 
+// this is for receiver address
+
+        ($request->receiverCountry ? $invoice['receiver']["address"]['country'] = $request->receiverCountry : "");
+        ($request->receiverBuildingNumber ? $invoice['receiver']["address"]['buildingNumber'] = $request->receiverBuildingNumber : "");
+        ($request->street ? $invoice['receiver']["address"]['street'] = $request->street : "");
+        ($request->receiverRegionCity ? $invoice['receiver']["address"]['regionCity'] = $request->receiverRegionCity : "");
+        ($request->receiverGovernate ? $invoice['receiver']["address"]['governate'] = $request->receiverGovernate : "");
+        ($request->receiverPostalCode ? $invoice['receiver']["address"]['postalcode'] = $request->receiverPostalCode : "");
+        ($request->receiverFloor ? $invoice['receiver']["address"]['floor'] = $request->receiverFloor : "");
+        ($request->receiverRoom ? $invoice['receiver']["address"]['room'] = $request->receiverRoom : "");
+        ($request->receiverLandmark ? $invoice['receiver']["address"]['landmark'] = $request->receiverLandmark : "");
+        ($request->receiverAdditionalInformation ? $invoice['receiver']["address"]['additionalInformation'] = $request->receiverAdditionalInformation : "");
+        ($request->receiverId ? $invoice['receiver']['id'] = $request->receiverId : "");
 
         // this is for reference debit or credit note
         ($request->referencesInvoice ? $invoice['references'] = [$request->referencesInvoice] : "");
@@ -203,14 +204,13 @@ class manageDoucumentController extends Controller
         // End Bank payment
 
         $trnsformed = json_encode($invoice, JSON_UNESCAPED_UNICODE);
-        $myFileToJson = fopen("D:\laragon\www\cotton-preprod\EInvoicing\SourceDocumentJson.json", "w") or die("unable to open file");
+        $myFileToJson = fopen("D:\laragon\www\cwatro\EInvoicing\SourceDocumentJson.json", "w") or die("unable to open file");
         fwrite($myFileToJson, $trnsformed);
         return redirect()->route('cer');
 
     }
     public function invoice(Request $request)
     {
-
 
         $validated = $request->validate([
             // 'receiverCountry' => 'required',
@@ -251,23 +251,13 @@ class manageDoucumentController extends Controller
 
             "receiver" => array(
                 "address" => array(
-                    "country" => $request->receiverCountry,
-                    "governate" => $request->receiverGovernate,
-                    "regionCity" => $request->receiverRegionCity,
-                    "street" => $request->street,
-                    "buildingNumber" => $request->receiverBuildingNumber,
-                    "postalCode" => $request->receiverPostalCode,
-                    "floor" => $request->receiverFloor,
-                    "room" => $request->receiverRoom,
-                    "landmark" => $request->receiverLandmark,
-                    "additionalInformation" => $request->receiverAdditionalInformation,
+
                 ),
                 "type" => $request->receiverType,
-                "id" => $request->receiverId,
                 "name" => $request->receiverName,
             ),
             "documentType" => $request->DocumentType,
-            "documentTypeVersion" => "0.9",
+            "documentTypeVersion" => "1.0",
             "dateTimeIssued" => $request->date . "T" . date("h:i:s") . "Z",
             "taxpayerActivityCode" => $request->taxpayerActivityCode,
             "internalID" => $request->internalId,
@@ -338,6 +328,19 @@ class manageDoucumentController extends Controller
             $invoice['invoiceLines'][$i] = $Data;
         }
 
+        // this is for receiver address
+
+        ($request->receiverCountry ? $invoice['receiver']["address"]['country'] = $request->receiverCountry : "");
+        ($request->receiverBuildingNumber ? $invoice['receiver']["address"]['buildingNumber'] = $request->receiverBuildingNumber : "");
+        ($request->street ? $invoice['receiver']["address"]['street'] = $request->street : "");
+        ($request->receiverRegionCity ? $invoice['receiver']["address"]['regionCity'] = $request->receiverRegionCity : "");
+        ($request->receiverGovernate ? $invoice['receiver']["address"]['governate'] = $request->receiverGovernate : "");
+        ($request->receiverPostalCode ? $invoice['receiver']["address"]['postalcode'] = $request->receiverPostalCode : "");
+        ($request->receiverFloor ? $invoice['receiver']["address"]['floor'] = $request->receiverFloor : "");
+        ($request->receiverRoom ? $invoice['receiver']["address"]['room'] = $request->receiverRoom : "");
+        ($request->receiverLandmark ? $invoice['receiver']["address"]['landmark'] = $request->receiverLandmark : "");
+        ($request->receiverAdditionalInformation ? $invoice['receiver']["address"]['additionalInformation'] = $request->receiverAdditionalInformation : "");
+        ($request->receiverId ? $invoice['receiver']['id'] = $request->receiverId : "");
 
         // this is for reference debit or credit note
         ($request->referencesInvoice ? $invoice['references'] = [$request->referencesInvoice] : "");
@@ -354,7 +357,7 @@ class manageDoucumentController extends Controller
         // End Bank payment
 
         $trnsformed = json_encode($invoice, JSON_UNESCAPED_UNICODE);
-        $myFileToJson = fopen("D:\laragon\www\cotton-preprod\EInvoicing\SourceDocumentJson.json", "w") or die("unable to open file");
+        $myFileToJson = fopen("D:\laragon\www\cwatro\EInvoicing\SourceDocumentJson.json", "w") or die("unable to open file");
         fwrite($myFileToJson, $trnsformed);
         return redirect()->route('cer');
 
@@ -365,11 +368,11 @@ class manageDoucumentController extends Controller
     public function openBat()
     {
 
-        shell_exec('D:\laragon\www\cotton-preprod\EInvoicing/SubmitInvoices2.bat');
-        $path = "D:\laragon\www\cotton-preprod\EInvoicing/FullSignedDocument.json";
-        $path2 = "D:\laragon\www\cotton-preprod\EInvoicing/Cades.txt";
-        $path3 = "D:\laragon\www\cotton-preprod\EInvoicing/CanonicalString.txt";
-        $path4 = "D:\laragon\www\cotton-preprod\EInvoicing/SourceDocumentJson.json";
+        shell_exec('D:\laragon\www\cwatro\EInvoicing/SubmitInvoices2.bat');
+        $path = "D:\laragon\www\cwatro\EInvoicing/FullSignedDocument.json";
+        $path2 = "D:\laragon\www\cwatro\EInvoicing/Cades.txt";
+        $path3 = "D:\laragon\www\cwatro\EInvoicing/CanonicalString.txt";
+        $path4 = "D:\laragon\www\cwatro\EInvoicing/SourceDocumentJson.json";
 
         $fullSignedFile = file_get_contents($path);
 
@@ -452,13 +455,6 @@ class manageDoucumentController extends Controller
         return view('invoices.createInvoice2', compact('companiess', 'allCompanies', "codes", 'ActivityCodes', 'taxTypes', "products"));
     }
 
-
-
-
-
-
-
-
     public function createInvoiceDollar()
     {
         $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
@@ -506,21 +502,6 @@ class manageDoucumentController extends Controller
         $companiess = DB::table('companies2')->where('id', $request->receiverName)->get();
         return view('invoices.createInvoice3', compact('companiess', 'allCompanies', "codes", 'ActivityCodes', 'taxTypes', "products"));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function createInvoice3()
     {

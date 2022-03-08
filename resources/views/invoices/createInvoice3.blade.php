@@ -99,7 +99,7 @@
                             <div class="col-2" style="margin-top: 23">
 
                                 <a href="{{ route('customer.create') }}" class="btn btn btn-success " style="text-align: center;min-width: 250px!important; background-color: #1598ca;
-                                                                    border-color: #1598ca;">
+                                                                        border-color: #1598ca;">
                                     @lang('site.addReceiver')
                                 </a>
                             </div>
@@ -108,14 +108,14 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-success"
                             style="text-align: center;min-width: 250px!important;background-color: #1598ca;
-                                                            border-color: #1598ca; margin-bottom: 30px;">@lang('site.fillDetails')</button>
+                                                                border-color: #1598ca; margin-bottom: 30px;">@lang('site.fillDetails')</button>
                     </div>
             </form>
         @else
             <div style="text-align: center">
                 <a href="{{ route('createInvoiceDollar') }}" class="btn btn-success"
                     style="text-align: center;min-width: 250px!important;background-color: #1598ca;
-                                                    border-color: #1598ca; margin-bottom: 30px;">@lang('site.backtochoose')</a>
+                                                        border-color: #1598ca; margin-bottom: 30px;">@lang('site.backtochoose')</a>
             </div>
         @endif
 
@@ -560,11 +560,8 @@
                                                             class="form-label">@lang("site.Line Item")</label>
                                                         <select name="itemCode[]" id="itemCode"
                                                             class="form-control form-control-sm">
-                                                            <option value="10000335" selected>المنتجات الصوفية القطنية
+                                                            <option value="10001699" selected>أقمشة / منسوجات التطريز
                                                             </option>
-                                                            <option value="10000742">تشطيب/تنشية الأقمشة</option>
-                                                            <option value="10000715">مجموعات متنوعة من مستحضرات النظافة
-                                                                العامة والشخصية</option>
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
@@ -881,9 +878,7 @@
                                 <label for="inputProductTitle"
                                     class="form-label">@lang("site.Line Item")</label>
                                 <select name="itemCode[]" id="itemCode" class="form-control form-control-sm">
-                            <option value="10000335" selected>المنتجات الصوفية القطنية</option>
-                            <option value="10000742">تشطيب/تنشية الأقمشة</option>
-                            <option value="10000715">مجموعات متنوعة من مستحضرات النظافة العامة والشخصية</option>
+                          <option value="10001699" selected>أقمشة / منسوجات التطريز</option>
                                  </select>
                              </div>
                                 <div class="mb-3">
