@@ -71,7 +71,7 @@ class ProductsController extends Controller
 
 // return redirect('products');
 
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -111,7 +111,7 @@ class ProductsController extends Controller
         $product = Http::withHeaders([
             "Authorization" => 'Bearer ' . $response['access_token'],
             "Content-Type" => "application/json",
-        ])->withBody($addProduct, "application/json")->post('https://api.preprod.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/codes');
+        ])->withBody($addProduct, "application/json")->post('https://api.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/codes');
 
         // return  $product['failedItems'][0]['errors'][0];
         // return $product;
@@ -280,7 +280,7 @@ class ProductsController extends Controller
     {
         // $products = Products::whereStatus('Approved')->latest()->get();
 
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -290,7 +290,7 @@ class ProductsController extends Controller
         $product = Http::withHeaders([
             "Authorization" => 'Bearer ' . $response['access_token'],
             "Content-Type" => "application/json",
-        ])->get('https://api.preprod.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/my?Active=true&Status=Approved&PS=1000');
+        ])->get('https://api.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/my?Active=true&Status=Approved&PS=1000');
 
 
         $products = $product['result'];
@@ -303,7 +303,7 @@ class ProductsController extends Controller
     {
         // $products = Products::whereStatus('Submitted')->latest()->get();
 
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -313,7 +313,7 @@ class ProductsController extends Controller
         $product = Http::withHeaders([
             "Authorization" => 'Bearer ' . $response['access_token'],
             "Content-Type" => "application/json",
-        ])->get('https://api.preprod.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/my?Active=true&Status=Submitted&PS=1000');
+        ])->get('https://api.invoicing.eta.gov.eg/api/v1.0/codetypes/requests/my?Active=true&Status=Submitted&PS=1000');
 
 // return $product['result'];
         // $products = Products::latest()->get();

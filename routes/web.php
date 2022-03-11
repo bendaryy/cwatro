@@ -135,13 +135,26 @@ Route::group(
 
             Route::post('add-sendPackage-full', [PackagesController::class, 'sendFullPackage'])->name('sendFullPackage');
             Route::post('add-sendPackage-summary', [PackagesController::class, 'sendSummaryPackage'])->name('sendSummaryPackage');
-            Route::get('allPackages',[PackagesController::class,'showAllPackages'])->name('showAllPackages');
-            Route::get('downloadPackage/{id}',[PackagesController::class,'downloadPackage'])->name('downloadPackage');
+            Route::get('allPackages', [PackagesController::class, 'showAllPackages'])->name('showAllPackages');
+            Route::get('downloadPackage/{id}', [PackagesController::class, 'downloadPackage'])->name('downloadPackage');
             Route::get('notification', [notificationController::class, 'getNotifications'])->name('getNotifications');
             // Route::get('getNotificationsDashboard', [notificationController::class, 'getNotificationsDashboard'])->name('getNotificationsDashboard');
-            Route::get('livewire',function(){
+            Route::get('livewire', function () {
                 return view('invoices.testlivewire');
             });
+
+            // حالات الفواتير من خلالنا و من خلال العملاء
+            Route::get('RequestcancelledDoc', [manageDoucumentController::class, 'RequestcancelledDoc'])->name('RequestCancell')->middleware('auth');
+            Route::get('CompaniesRequestcancelledDoc', [manageDoucumentController::class, 'companiesRequestcancelledDoc'])->name('CompaniesRequestCancell')->middleware('auth');
+            Route::get('cancelleddoc', [manageDoucumentController::class, 'cancelledDoc'])->name('allCancell')->middleware('auth');
+            Route::get('companyCancelleddoc', [manageDoucumentController::class, 'companyCancelledDoc'])->name('companyAllCancell')->middleware('auth');
+            Route::get('rejected', [manageDoucumentController::class, 'rejected'])->name('allRejected')->middleware('auth');
+            Route::get('companyrejected', [manageDoucumentController::class, 'companyRejected'])->name('companyRejected')->middleware('auth');
+            Route::get('requestcompanyrejected', [manageDoucumentController::class, 'requestCompanyRejected'])->name('requestCompanyRejected')->middleware('auth');
+            Route::get('requestRejected', [manageDoucumentController::class, 'requestRejected'])->name('requestRejected')->middleware('auth');
+            Route::put('DeclineRejectDocument/{uuid}', [manageDoucumentController::class, 'DeclineRejectDocument'])->name('declineRejectDocument')->middleware('auth');
+            Route::put('DeclineCancelDocument/{uuid}', [manageDoucumentController::class, 'DeclineCancelDocument'])->name('declineCancellDocument')->middleware('auth');
+
         });
 
     });

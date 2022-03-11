@@ -10,7 +10,7 @@ class PackagesController extends Controller
     public function showAllPackages()
     {
         {
-            $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+            $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
                 'grant_type' => 'client_credentials',
                 'client_id' => auth()->user()->details->client_id,
                 'client_secret' => auth()->user()->details->client_secret,
@@ -19,7 +19,7 @@ class PackagesController extends Controller
 
             $showPackages = Http::withHeaders([
                 "Authorization" => 'Bearer ' . $response['access_token'],
-            ])->get('https://api.preprod.invoicing.eta.gov.eg/api/v1/documentPackages/requests?pageSize=1000000');
+            ])->get('https://api.invoicing.eta.gov.eg/api/v1/documentPackages/requests?pageSize=1000000');
 
             // return $showPackages['result'];
             $packages = $showPackages['result'];
@@ -41,7 +41,7 @@ class PackagesController extends Controller
 
     public function sendFullPackage(Request $request)
     {
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -68,7 +68,7 @@ class PackagesController extends Controller
             "Content-Type" => "application/json",
             "Accept-Language" => "ar",
 
-        ])->withBody($trnsformed, "application/json")->post('https://api.preprod.invoicing.eta.gov.eg/api/v1/documentPackages/requests');
+        ])->withBody($trnsformed, "application/json")->post('https://api.invoicing.eta.gov.eg/api/v1/documentPackages/requests');
         if ($sendPackage->ok() == true) {
             return redirect()->route("showAllPackages")->with("success", " تم إنشاء الحزمة رقم " . $sendPackage['requestId']);
         } else {
@@ -79,7 +79,7 @@ class PackagesController extends Controller
 
     public function sendSummaryPackage(Request $request)
     {
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -106,7 +106,7 @@ class PackagesController extends Controller
             "Content-Type" => "application/json",
             "Accept-Language" => "ar",
 
-        ])->withBody($trnsformed, "application/json")->post('https://api.preprod.invoicing.eta.gov.eg/api/v1/documentPackages/requests');
+        ])->withBody($trnsformed, "application/json")->post('https://api.invoicing.eta.gov.eg/api/v1/documentPackages/requests');
 
         if ($sendPackage->ok() == true) {
             return redirect()->route("showAllPackages")->with("success", " تم إنشاء الحزمة رقم " . $sendPackage['requestId']);
@@ -129,7 +129,7 @@ class PackagesController extends Controller
         $download = Http::withHeaders([
             "Authorization" => 'Bearer ' . $response['access_token'],
             "Content-type" => "application/octet-stream",
-        ])->get("https://api.preprod.invoicing.eta.gov.eg/api/v1/documentPackages/$id");
+        ])->get("https://api.invoicing.eta.gov.eg/api/v1/documentPackages/$id");
 
         return response($download)->header('Content-Type', 'application/zip');
 

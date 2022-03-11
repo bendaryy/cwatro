@@ -9,7 +9,7 @@ class notificationController extends Controller
     public function getNotifications()
     {
 
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -19,7 +19,7 @@ class notificationController extends Controller
         $notification = Http::withHeaders([
             "Authorization" => 'Bearer ' . $response['access_token'],
             "Content-type" => "application/json",
-        ])->get("https://api.preprod.invoicing.eta.gov.eg/api/v1/notifications/taxpayer?pageSize=100");
+        ])->get("https://api.invoicing.eta.gov.eg/api/v1/notifications/taxpayer?pageSize=100");
 
         $notifications = $notification['result'];
 
@@ -29,7 +29,7 @@ class notificationController extends Controller
     public function getNotificationsDashboard()
     {
 
-        $response = Http::asForm()->post('https://id.preprod.eta.gov.eg/connect/token', [
+        $response = Http::asForm()->post('https://id.eta.gov.eg/connect/token', [
             'grant_type' => 'client_credentials',
             'client_id' => auth()->user()->details->client_id,
             'client_secret' => auth()->user()->details->client_secret,
@@ -39,7 +39,7 @@ class notificationController extends Controller
         $notification = Http::withHeaders([
             "Authorization" => 'Bearer ' . $response['access_token'],
             "Content-type" => "application/json",
-        ])->get("https://api.preprod.invoicing.eta.gov.eg/api/v1/notifications/taxpayer?pageSize=100");
+        ])->get("https://api.invoicing.eta.gov.eg/api/v1/notifications/taxpayer?pageSize=100");
 
         $notifications = $notification['result'];
 
