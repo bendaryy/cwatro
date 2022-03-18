@@ -557,7 +557,7 @@
                                                         <label for="inputProductTitle"
                                                             class="form-label">@lang("site.Line Item")</label>
                                                         <select name="itemCode[]" id="itemCode"
-                                                            class="form-control form-control-sm form-select" required>
+                                                            class="form-control form-control-sm form-select single-select" required>
                                                             @foreach ($products as $product)
                                                                 <option value="{{ $product['itemCode'] }}"
                                                                     style="font-size: 20px">
@@ -846,7 +846,7 @@
                                 <label for="inputProductTitle"
                                     class="form-label">@lang("site.Line Item")</label>
                                 <select name="itemCode[]" id="itemCode"
-                                                            class="form-control form-control-sm form-select" required>
+                                                            class="form-control form-control-sm form-select single-select" required>
                                                             @foreach ($products as $product)
                                                                 <option value="{{ $product['itemCode'] }}"
                                                                     style="font-size: 20px">
