@@ -132,7 +132,7 @@ class manageDoucumentController extends Controller
         for ($i = 0; $i < count($request->quantity); $i++) {
             $Data = [
                 "description" => $request->invoiceDescription[$i],
-                "itemType" => "GS1",
+                "itemType" => "EGS",
                 "itemCode" => $request->itemCode[$i],
                 // "itemCode" => "10003834",
                 "unitType" => "EA",
@@ -285,7 +285,7 @@ class manageDoucumentController extends Controller
         for ($i = 0; $i < count($request->quantity); $i++) {
             $Data = [
                 "description" => $request->invoiceDescription[$i],
-                "itemType" => "GS1",
+                "itemType" => "EGS",
                 "itemCode" => $request->itemCode[$i],
                 // "itemCode" => "10003834",
                 "unitType" => "EA",
